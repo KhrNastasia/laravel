@@ -9,7 +9,8 @@ class Catalog extends Model
 {
     use HasFactory;
     public $fillable=['name','parent_id'];
-    public function childs(){
-        $this->hasMany(Catalog::class, 'parent_id');
+    public function children(){
+       return $this->hasMany(Catalog::class, 'parent_id')->with('children');
     }
+
 }

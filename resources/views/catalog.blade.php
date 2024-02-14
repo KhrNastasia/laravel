@@ -2,21 +2,21 @@
     <div>
         <div class='text-center text-3xl p-3'>Каталог</div>
         <ul>
-            @foreach($catalogs as $catalog)
+            @foreach($catalogs as $item)
+            @if($item->parent_id == null)
             <li>
-                {{$catalog->name}} 
-                @if($catalog->childs() != null)
-                @if(count($catalog->childs())>0)
-                    <ul>
-                    @foreach($catalog->childs() as $child)
-                        <li>
-                            {{$child->name}}
-                        </li>
-                    @endforeach
-                    </ul>
-                @endif
-                @endif
+                {{$item->name}} 
+                <ul>
+                @foreach($catalogs as $catalog)
+                    @if($catalog->parent_id == $item->id)
+                    <li class='px-8'>
+                        {{$catalog->name}}  
+                    </li>
+                    @endif
+                @endforeach
+                </ul>
             </li>
+            @endif
             @endforeach
         </ul>
     </div>
