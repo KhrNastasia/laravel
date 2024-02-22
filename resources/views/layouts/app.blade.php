@@ -31,10 +31,6 @@
                 {{ $slot }}
             </main>
         </div>
-            
-<footer class='text-center text-white z-1 absolute bottom-0 left-0'>
-  <h5 class='font-light'>khr_nastasia 2024</h5>
-</footer>
     </body>
 
 </html>

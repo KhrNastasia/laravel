@@ -1,23 +1,13 @@
 <x-app-layout>
-    <div>
-        <div class='text-center text-3xl p-3'>Каталог</div>
-        <ul>
-            @foreach($catalogs as $item)
-            @if($item->parent_id == null)
-            <li>
-                {{$item->name}} 
-                <ul>
-                @foreach($catalogs as $catalog)
-                    @if($catalog->parent_id == $item->id)
-                    <li class='px-8'>
-                        {{$catalog->name}}  
-                    </li>
-                    @endif
-                @endforeach
-                </ul>
-            </li>
-            @endif
-            @endforeach
-        </ul>
+<div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
+
+            <div class="p-4 sm:p-8 bg-white dark:bg-gray-800 shadow sm:rounded-lg">
+                <div class="max-w-xl">
+                    @include('catalog.partials.catalog-product')
+                </div>
+            </div>
+
+        </div>
     </div>
 </x-app-layout>

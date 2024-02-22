@@ -10,10 +10,14 @@ use Illuminate\Database\MySqlConnection;
 class CatalogController extends Controller
 {
     public function getIndex(){
-        $catalogs = DB::table('catalogs')->get();
-        // dd($all);
-        return view('catalog', [
-            'catalogs' => $catalogs,
-        ]);
+        $catalogs = Catalog::all();
+        return view('catalogs', compact('catalog'));
+    }
+
+    public function getOne(Catalog $catalog){
+        $prod = DB::table('products')->where('catalog_id', '=', $catalog->id)->first();
+        // $prod = $catalog->with('products')->first();
+        // dd($prods);
+        return view('catalog', compact('prod', 'catalog'));
     }
 }
