@@ -11,7 +11,7 @@ class CatalogController extends Controller
 {
     public function getIndex(){
         $catalogs = Catalog::all();
-        return view('catalogs', compact('catalog'));
+        return view('catalogs', compact('catalogs'));
     }
 
     public function getOne(Catalog $catalog){
