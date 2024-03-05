@@ -11,13 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('maintexts', function (Blueprint $table) {
-            $table->id();
-            $table->string('name');
-            $table->text('body')->nullable();
-            $table->string('url');
-            $table->enum('lang',['ru', 'en', 'br'])->default('ru');
-            $table->timestamps();
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->softDeletes();
         });
     }
 
@@ -26,6 +21,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('maintexts');
+        Schema::table('reviews', function (Blueprint $table) {
+            //
+        });
     }
 };

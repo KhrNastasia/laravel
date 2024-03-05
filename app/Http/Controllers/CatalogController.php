@@ -15,9 +15,10 @@ class CatalogController extends Controller
     }
 
     public function getOne(Catalog $catalog){
-        $prod = DB::table('products')->where('catalog_id', '=', $catalog->id)->first();
+        $prod = DB::table('products')->where('catalog_id', '=', $catalog->id)->get();
+        $category = Catalog::where('parent_id', '=', $catalog->id)->get();
         // $prod = $catalog->with('products')->first();
-        // dd($prods);
-        return view('catalog', compact('prod', 'catalog'));
+        // dd($category);
+        return view('catalog', compact('prod', 'catalog', 'category'));
     }
 }

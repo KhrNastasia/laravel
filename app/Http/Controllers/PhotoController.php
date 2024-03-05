@@ -11,12 +11,16 @@ use Illuminate\Http\Request;
 class PhotoController extends Controller
 {
     public function getIndex(){
-        return view('photo');
+        // $reviews = Review::all();
+        $reviews = Review::orderBy('id', 'DESC')->paginate(3);
+        return view('photo', compact('reviews'));
     }
 
-    public function getData(Review $review){
-        dd($review);
-        return view('review');
+    public function getData(Review $reviews){
+        // $reviews = Review::all(); 
+        // dd($reviews);
+        $reviews = Review::orderBy('id', 'DESC')->simplePaginate(3);
+        return view('photo', compact('reviews'));
     }
 
     public function postData(Request $request){
@@ -26,7 +30,7 @@ class PhotoController extends Controller
             $pic = App::make(Imag::class)->url($request->file('add_photo_file'));
             $review->picture = $pic;
         }
-        $review->user_id = Auth::user()->id;
+        $review->user_id = Auth::guest() ? 0 : Auth::user()->id;
         $review->save();
         return redirect()->back();
     }

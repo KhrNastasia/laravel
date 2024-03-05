@@ -22,7 +22,7 @@ class Imag{
                 $constraint->aspectRatio();
             });
             $img->save($name_path_small);
-            return $name_path;
+            return $filename;
         }else {
             return false;
         }

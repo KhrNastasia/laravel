@@ -10,13 +10,13 @@
     <div class='text-center'>
       <ul class='flex inline-block space-x-4'>
         <li class='uppercase hover:underline underline-offset-2 decoration-1'>
-            <a href="{{asset('catalog')}}">catalog</a>  
+            <a href="{{asset('catalog')}}">{{__('menu.catalog')}}</a>  
         </li>
         <li class='uppercase hover:underline underline-offset-2 decoration-1'>
-        <a href="{{asset('photo')}}">Photo</a>  
+        <a href="{{asset('photo')}}">{{__('menu.photo')}}</a>  
         </li>
         <li class='uppercase hover:underline underline-offset-2 decoration-1'>
-            <a href="{{asset('about_us')}}">about</a>    
+            <a href="{{asset('about_us')}}">{{__('menu.about')}}</a>    
         </li>
       </ul>
     </div>
@@ -27,8 +27,11 @@
         </div>
     </div>
     
-
-
+    <div class='flex text-right justify-end'>
+        <div class="font-medium text-base text-gray-800 dark:text-gray-200">
+          <x-select-lang></x-select-lang>    
+        </div>
+    </div>
 
   </div>
 </header>

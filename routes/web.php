@@ -15,19 +15,6 @@ use App\Http\Controllers;
 |
 */
 
-Route::get('/', [Controllers\BaseController::class, 'getIndex']);
-
-Route::get('/catalog', [Controllers\CatalogController::class, 'getIndex']);
-Route::get('/catalog/{catalog}', [Controllers\CatalogController::class, 'getOne']);
-
-Route::get('/photo', [Controllers\PhotoController::class, 'getIndex']);
-
-Route::post('/review', [Controllers\PhotoController::class, 'postData']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
-
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -38,5 +25,21 @@ Route::get('/logout', [Controllers\UserController::class, 'Logout']);
 
 require __DIR__.'/auth.php';
 
-//всегда в конце
-Route::get('{url}',[Controllers\MaintextController::class, 'getUrl']);
+Route::middleware('lang')->group(function(){
+    Route::get('/', [Controllers\BaseController::class, 'getIndex']);
+
+    Route::get('/catalog', [Controllers\CatalogController::class, 'getIndex']);
+    Route::get('/catalog/{catalog}', [Controllers\CatalogController::class, 'getOne']);
+
+    Route::get('/photo', [Controllers\PhotoController::class, 'getIndex']);
+
+    Route::post('/review', [Controllers\PhotoController::class, 'postData']);
+    // Route::get('/review', [Controllers\PhotoController::class, 'getData']);
+
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->middleware(['auth', 'verified'])->name('dashboard');
+
+    //всегда в конце
+    Route::get('{url}',[Controllers\MaintextController::class, 'getUrl']);
+});
