@@ -29,6 +29,7 @@ Route::middleware('lang')->group(function(){
     Route::get('/', [Controllers\BaseController::class, 'getIndex']);
 
     Route::get('/catalog', [Controllers\CatalogController::class, 'getIndex']);
+    Route::get('/example', [Controllers\CatalogController::class, 'example']);
     Route::get('/catalog/{catalog}', [Controllers\CatalogController::class, 'getOne']);
 
     Route::get('/photo', [Controllers\PhotoController::class, 'getIndex']);

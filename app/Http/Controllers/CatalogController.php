@@ -21,4 +21,8 @@ class CatalogController extends Controller
         // dd($category);
         return view('catalog', compact('prod', 'catalog', 'category'));
     }
+
+    public function example(){
+        return view('example');
+    }
 }
