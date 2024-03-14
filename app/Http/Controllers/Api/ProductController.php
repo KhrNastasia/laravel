@@ -31,7 +31,7 @@ class ProductController extends Controller
      */
     public function show(string $id)
     {
-        return new ProductResource(Product::findOrFail($id)); 
+        return new ProductResource(Product::findOrFail($id));
     }
 
     /**
@@ -57,5 +57,10 @@ class ProductController extends Controller
             $msg = 'Not founded';
         }
         return response()->json(['msg'=>$msg]);
+    }
+
+    public function getIndex(Request $request){
+        $products = Product::filter($request->all())->simplePaginate(28);
+        return ProductResource::collection($products);
     }
 }

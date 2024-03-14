@@ -35,6 +35,8 @@ Route::apiResource('catalog', Controllers\Api\CatalogapiController::class);
 
 Route::apiResource('product', Controllers\Api\ProductController::class);
 
+Route::get('products', [Controllers\Api\ProductController::class, 'getIndex']);
+
 Route::apiResource('review', Controllers\Api\PhotoController::class);
 
 Route::apiResource('maintext', Controllers\Api\MaintextController::class);
@@ -42,3 +44,5 @@ Route::apiResource('maintext', Controllers\Api\MaintextController::class);
 Route::post('register', [Controllers\Api\AuthController::class, 'register']);
 
 Route::post('login', [Controllers\Api\AuthController::class, 'login']);
+
+

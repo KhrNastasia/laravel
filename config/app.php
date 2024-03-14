@@ -156,9 +156,8 @@ return [
     */
 
     'providers' => ServiceProvider::defaultProviders()->merge([
-        /*
-         * Package Service Providers...
-         */
+        EloquentFilter\ServiceProvider::class,
+
         Intervention\Image\ImageServiceProvider::class,
         /*
          * Application Service Providers...
