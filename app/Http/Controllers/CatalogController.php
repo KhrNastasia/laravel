@@ -11,7 +11,8 @@ class CatalogController extends Controller
 {
     public function getIndex(){
         $catalogs = Catalog::all();
-        return view('catalogs', compact('catalogs'));
+        $prod = DB::table('products')->get();
+        return view('catalogs', compact('catalogs', 'prod'));
     }
 
     public function getOne(Catalog $catalog){
