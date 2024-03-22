@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 use App\Models\Catalog;
 use Illuminate\Support\Facades\DB;
@@ -11,7 +12,8 @@ class CatalogController extends Controller
 {
     public function getIndex(){
         $catalogs = Catalog::all();
-        $prod = DB::table('products')->get();
+//        $prod = DB::table('products')->get();
+        $prod = Product::orderBy('id', 'ASC')->paginate(4);
         return view('catalogs', compact('catalogs', 'prod'));
     }
 
