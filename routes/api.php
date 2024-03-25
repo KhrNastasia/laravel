@@ -45,4 +45,4 @@ Route::post('register', [Controllers\Api\AuthController::class, 'register']);
 
 Route::post('login', [Controllers\Api\AuthController::class, 'login']);
 
-
+Route::post('contact', [Controllers\Api\ContactController::class, 'postIndex']);

@@ -32,6 +32,8 @@ Route::middleware('lang')->group(function(){
     Route::get('/example', [Controllers\CatalogController::class, 'example']);
     Route::get('/catalog/{catalog}', [Controllers\CatalogController::class, 'getOne']);
 
+    Route::get('/account/{user?}', [ProfileController::class, 'account']);
+
     Route::get('/photo', [Controllers\PhotoController::class, 'getIndex']);
 
     Route::post('/review', [Controllers\PhotoController::class, 'postData']);
