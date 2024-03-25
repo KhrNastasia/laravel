@@ -3,7 +3,13 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+<<<<<<< HEAD
 use Illuminate\Support\Str;
+=======
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
+use App\Models\Catalog;
+>>>>>>> 3d10a21103a9eb146805bbbe31b16c06e3a58067
 
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Product>
